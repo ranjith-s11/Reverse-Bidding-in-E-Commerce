@@ -1,0 +1,100 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<main>
+
+  
+	
+  <div class="container marketing p-5">
+  <div>
+  <p class="h5 text-info text-center">Your Search Result for </br><span class="text-danger h1">" {{request.GET.searchy}} "</span> </p>
+  
+  <div class="btn-group px-5 p-3" >
+            <a class=" dropdown-toggle btn btn-warning px-5" style="float-right;" href="#" id="dropdown01" data-bs-toggle="dropdown" aria-expanded="false">
+				<svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-sort-alpha-down px-1" viewBox="0 0 16 16">
+				<path fill-rule="evenodd" d="M10.082 5.629 9.664 7H8.598l1.789-5.332h1.234L13.402 7h-1.12l-.419-1.371h-1.781zm1.57-.785L11 2.687h-.047l-.652 2.157h1.351z"/>
+				<path d="M12.96 14H9.028v-.691l2.579-3.72v-.054H9.098v-.867h3.785v.691l-2.567 3.72v.054h2.645V14zM4.5 2.5a.5.5 0 0 0-1 0v9.793l-1.146-1.147a.5.5 0 0 0-.708.708l2 1.999.007.007a.497.497 0 0 0 .7-.006l2-2a.5.5 0 0 0-.707-.708L4.5 12.293V2.5z"/>
+				</svg>
+				Sort
+			</a>
+            <ul class="dropdown-menu" aria-labelledby="dropdown01">
+              <li><a class="dropdown-item" href="#">Price:  low to high</a></li>
+              <li><a class="dropdown-item" href="#">Price:  high to low</a></li>
+			  <hr/>
+              <li><a class="dropdown-item" href="#">xyz</a></li>
+              <li><a class="dropdown-item" href="#">abc</a></li>
+            </ul>
+			
+  </div>
+			
+	<button type="button" class="btn btn-success px-5" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+				<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-funnel-fill" viewBox="0 0 16 16">
+				<path d="M1.5 1.5A.5.5 0 0 1 2 1h12a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.128.334L10 8.692V13.5a.5.5 0 0 1-.342.474l-3 1A.5.5 0 0 1 6 14.5V8.692L1.628 3.834A.5.5 0 0 1 1.5 3.5v-2z"/>
+				</svg>
+				Filter
+	</button>
+
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">FILTER</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <label for="customRange3" class="form-label">Max Price : </label>
+		<input type="range" value="100" max="1000" min="10" id="rangeInput"   oninput="maxPrice.value=this.value"/>
+		<input type="number" value="100" max="1000" min="10" class="form-control" id="maxPrice" onkeyup="rangeInput.value=this.value" placeholder="price"/>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Understood</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+  </div>
+
+    <!-- Three columns of text below the carousel -->
+    <div class="row p-5">
+	
+	
+		{% for product in products %}
+		<div class="col-md-3 mb-4">
+			<div class="card shadow bg-light">
+			  <a href="/product/{{product.id}}"><img src="/media/{{product.img1}}" class="card-img-top" alt="image"></a>
+			  <div class="card-body">
+			    <a><h5 class="text-center text-danger" >{{product.name}}</h5></a>
+				<hr/>
+				<h6 style="display:inline;">Price  :  </h6>
+				
+				{% widthratio product.offer 1 product.price as value %}
+				{% widthratio value -100 1 as result %}
+				
+				<h6 style="display:inline; float:right;" ><s>$ {{product.price}}</s>&nbsp; $ {{product.price|add:result}}</h6>
+				<a class="px-1 text-success " style="float:right;">
+				<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-tags-fill" viewBox="0 0 16 16">
+				<path d="M2 2a1 1 0 0 1 1-1h4.586a1 1 0 0 1 .707.293l7 7a1 1 0 0 1 0 1.414l-4.586 4.586a1 1 0 0 1-1.414 0l-7-7A1 1 0 0 1 2 6.586V2zm3.5 4a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"/>
+				<path d="M1.293 7.793A1 1 0 0 1 1 7.086V2a1 1 0 0 0-1 1v4.586a1 1 0 0 0 .293.707l7 7a1 1 0 0 0 1.414 0l.043-.043-7.457-7.457z"/>
+				</svg>
+				<h7 >{{product.category}}</h7></a>
+			  </div>
+			</div>
+		</div>
+		{% endfor %}
+		
+
+		
+	</div>
+
+    <!-- START THE FEATURETTES -->
+
+    <hr class="featurette-divider">
+
+
+</main>
+
+{% endblock %}

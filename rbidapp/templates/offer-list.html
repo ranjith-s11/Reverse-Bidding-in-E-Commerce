@@ -1,0 +1,54 @@
+{% extends 'base-seller.html' %}
+{% load static %}
+{% block content %}
+
+<main>
+
+	    <hr class="featurette-divider">
+	
+	<div class="container marketing p-5">
+{% for offer in offers %}
+
+<div class="card mb-3 " style="max-width: 900px;">
+  <div class="row g-0">
+  
+    <div class="col-md-3">
+      <img src="/media/{{offer.b_img}}" style="width:500px;height:200px;" class="img-fluid rounded-start" alt="...">
+    </div>
+	
+    <div class="col-md-5">
+      <div class="card-body">
+	  <a class="p-3"></a>
+        <h5 class="card-title text-danger">Product : <a class="text-primary h2" >{{offer.b_name}}</a></h2>
+        <h5 class="card-text text-danger">Quantity : <a class="text-primary h2" >{{offer.b_qty}}</a></h3>
+      </div>
+    </div>
+	
+	<div class="col-md-3">
+      <div class="card-body">
+	  <a class="p-5" ></a>
+	  <a href="offer/{{offer.id}}" class="btn btn-warning rounded-circle p-3"><span class="h2" >Click Here</span></a>
+      </div>
+    </div>
+	
+  </div>
+</div>
+
+
+    <hr class="featurette-divider">
+{% endfor %}
+ 
+	
+	</div>
+	
+
+    <!-- /END THE FEATURETTES -->
+
+
+
+
+
+</main>
+{% endblock %}
+
+   

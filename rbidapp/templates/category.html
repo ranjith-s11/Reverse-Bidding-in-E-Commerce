@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<main>
+
+
+  <!-- Marketing messaging and featurettes
+  ================================================== -->
+  <!-- Wrap the rest of the page in another container to center all the content. -->
+
+
+	
+  <div class="container marketing p-5">
+      <hr/>
+  <p class="h1 text-info text-center">CATEGORIES</p>
+  <p></p>
+
+    <!-- Three columns of text below the carousel -->
+    <div class="row p-5">
+	
+	{% for category in categories %}
+      <div class="col-lg-4">
+	  <a href="/cat-product/{{category.id}}" >
+        <img src="media/{{category.c_img}}"  class="bd-placeholder-img rounded-circle img-hover" width="200" height="200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholde" preserveAspectRatio="xMidYMid slice" >
+      </a>
+		<p class="text-warning h3 text-center" >{{category.title}}</p>
+      </div><!-- /.col-lg-4 -->
+	{% endfor %}
+	 
+
+    </div><!-- /.row -->
+
+
+    <!-- START THE FEATURETTES -->
+
+    <hr class="featurette-divider">
+	
+	</div>
+
+</main>
+
+{% endblock %}

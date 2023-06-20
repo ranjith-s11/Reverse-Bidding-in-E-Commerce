@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<main>
+
+  
+	
+  <div class="container marketing p-5">
+	<table class="table table-bordered table-hover">
+		<thead class="text-info" >
+			<tr>
+				<th>Product List</th>
+				<th>Quantity</th>
+				<th>Price</th>
+				<th>Total</th>
+			</tr>
+		</thead>
+		<tbody class="text-dark table-success" >	
+		
+		
+		{% for cart in carts %}
+			<tr>
+				<td>
+					<img src="/media/{{cart.p_img}}" class="rounded-3" height="100" width="100" />
+					<p><a  class="text-dark px-3 h6" href="product/{{cart.p_id}}">{{cart.p_name}}</a></p>
+				</td>
+				<td class="p-5">
+				
+				<table>
+				<tr>
+					<th>
+					<input type="number" class="" value="{{cart.p_qty}}" style="vertical-align: bottom;" />
+					<button class="btn btn-sm btn-success" data-item=""><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-arrow-repeat" viewBox="0 0 16 16">
+					<path d="M11.534 7h3.932a.25.25 0 0 1 .192.41l-1.966 2.36a.25.25 0 0 1-.384 0l-1.966-2.36a.25.25 0 0 1 .192-.41zm-11 2h3.932a.25.25 0 0 0 .192-.41L2.692 6.23a.25.25 0 0 0-.384 0L.342 8.59A.25.25 0 0 0 .534 9z"/>
+					<path fill-rule="evenodd" d="M8 3c-1.552 0-2.94.707-3.857 1.818a.5.5 0 1 1-.771-.636A6.002 6.002 0 0 1 13.917 7H12.9A5.002 5.002 0 0 0 8 3zM3.1 9a5.002 5.002 0 0 0 8.757 2.182.5.5 0 1 1 .771.636A6.002 6.002 0 0 1 2.083 9H3.1z"/>
+					</svg>
+					</button>
+					</th>
+					<th>
+					<form action="{% url 'delete-cart' cart.id %}" >
+					<button class="btn btn-sm btn-danger" type="submit"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-trash3-fill" viewBox="0 0 16 16">
+					<path d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5Zm-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5ZM4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06Zm6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528ZM8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5Z"/>
+					</svg></button>
+					</form>
+					</th>
+				</tr>
+				</table>
+					
+				</td>
+				<td>$ {{cart.p_price}}</td>
+				<td>$ {% widthratio cart.p_price 1 cart.p_qty %}</td>
+			</tr>
+		{% endfor %}
+
+			
+		</tbody>
+		<tfoot class="text-warning">
+			<tr>
+				<td colspan="2"></td>
+				<th>Total</th>
+				<th>$ 600</th>
+			</tr>
+			<tr>
+				<td colspan="4" align="right">
+					<a href="#" class="btn btn-danger btn-sm h3"> <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-bag-check-fill" viewBox="0 0 16 16">
+					<path fill-rule="evenodd" d="M10.5 3.5a2.5 2.5 0 0 0-5 0V4h5v-.5zm1 0V4H15v10a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V4h3.5v-.5a3.5 3.5 0 1 1 7 0zm-.646 5.354a.5.5 0 0 0-.708-.708L7.5 10.793 6.354 9.646a.5.5 0 1 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0l3-3z"/>
+					</svg> CHECKOUT</a>
+				</td>
+			</tr>
+		</tfoot>
+	</table>
+	</div>
+
+    <!-- START THE FEATURETTES -->
+
+    <hr class="featurette-divider">
+	
+</main>
+{% endblock %}

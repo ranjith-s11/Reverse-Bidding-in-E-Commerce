@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<main>
+
+  
+	
+  <div class="container marketing p-5">
+  <h1>You Got Your Bided Items ..</h1>
+	<table class="table table-bordered table-hover">
+		<thead class="text-info" >
+			<tr>
+				<th>Bided Products</th>
+				<th>Quantity</th>
+				<th>Price</th>
+
+				<th>End Date</th>
+				<th>Seller</th>
+				<th>Auction Price</th>
+
+
+			</tr>
+		</thead>
+		<tbody class="text-dark table-success" >	
+		
+		
+		{% for bid in bidresults %}
+			<tr>
+				<td>
+				
+				<table>
+					<tr>
+						<th>
+						<img src="/media/{{bid.img}}" class="rounded-3" height="100" width="100" />
+						<p><a  class="text-dark px-3 h6" href="#">{{bid.name}}</a></p>
+						</th>
+						
+						
+					</tr>
+				</table>
+					
+				</td>
+				<td >
+					{{bid.qty}}
+				</td>
+				<td>$ {{bid.price}}</td>
+
+				
+				<td>{{bid.expiry}}</td>
+				<td>{{bid.seller1}}</td>
+				<td>$ {{bid.seller1_price}}</td>
+
+				
+			</tr>
+		{% endfor %}
+
+			
+		</tbody>
+		
+	</table>
+	</div>
+
+    <!-- START THE FEATURETTES -->
+
+    <hr class="featurette-divider">
+	
+</main>
+{% endblock %}

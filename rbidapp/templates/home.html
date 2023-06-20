@@ -1,0 +1,195 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<main>
+
+  
+{% if sellers.status %}
+<h1 class="p-5" ></h1>
+
+<h1 class="text-center p-5" >hi sorry</h1>
+
+<h1 class="p-5" ></h1>
+<hr />
+{% else %}
+
+  <div id="myCarousel" class="carousel slide p-5" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+	{% for banner in banners %}
+	{% if forloop.counter0 == 0 %}
+      <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="{{forloop.counter0}}" class="active"></button>
+	{% else %}
+      <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="{{forloop.counter0}}" ></button>
+	{% endif %}
+	{% endfor %}
+    </div>
+    <div class="carousel-inner">
+	
+	{% for banner in banners %}
+	{% if forloop.counter == 1 %}
+      <div class="carousel-item active">
+	 {% else %}
+		<div class="carousel-item">
+	{% endif %}
+        <img src="/media/{{banner.b_img}}" class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
+
+        <div class="container">
+          <div class="carousel-caption text-center">
+            
+          </div>
+        </div>
+      </div>
+	{% endfor %}
+	
+    </div>
+	
+    <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+
+
+  <!-- Marketing messaging and featurettes
+  ================================================== -->
+  <!-- Wrap the rest of the page in another container to center all the content. -->
+
+  <div class="container marketing p-3">
+  <p class="h1 text-info text-center">CATEGORIES</p>
+  <p></p>
+
+    <!-- Three columns of text below the carousel -->
+    <div class="row p-5">
+	
+		{% for category in categories %}
+      <div class="col-lg-3">
+	  <a href="#" >
+        <img src="/media/{{category.c_img}}"  class="bd-placeholder-img rounded-circle" width="250" height="250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholde" preserveAspectRatio="xMidYMid slice" >
+        </a>
+		<p class="text-success h3 text-center" >{{category.title}}</p>
+      </div><!-- /.col-lg-4 -->
+		{% endfor %}
+	  
+	  <div class="col-lg-3">
+	  <a href="{% url 'category-list' %}" >
+        <svg xmlns="http://www.w3.org/2000/svg" width="250" height="250" fill="currentColor" class="bi bi-arrow-right-circle-fill" viewBox="0 0 16 16">
+		<path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0zM4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z"/>
+		</svg>
+		</a>
+      </div><!-- /.col-lg-4 -->
+
+    </div><!-- /.row -->
+
+
+    <!-- START THE FEATURETTES -->
+
+    
+
+
+    <!-- START THE FEATURETTES -->
+
+    <hr class="featurette-divider">
+
+    <div class="row featurette">
+      <div class="col-md-7">
+        <h2 class="featurette-heading">First featurette heading. <span class="text-muted">It’ll blow your mind.</span></h2>
+        <p class="lead">Some great placeholder content for the first featurette here. Imagine some exciting prose here.</p>
+      </div>
+      <div class="col-md-5">
+        <img src="/media/1.png"  class="bd-placeholder-img" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholde" preserveAspectRatio="xMidYMid slice" >
+
+      </div>
+    </div>
+
+    <hr class="featurette-divider">
+	
+	 <div class="container marketing p-3">
+  <p class="h1 text-info text-center">PRODUCTS</p>
+  <p></p>
+
+    <!-- Three columns of text below the carousel -->
+    <div class="row p-3">
+
+		{% for product in  products %}
+		<div class="col-md-3 mb-4">
+			<div class="card shadow bg-light">
+			  <a href="#"><img src="/media/{{product.img1}}" class="card-img-top" alt="title"></a>
+			  <div class="card-body">
+			    <a><h5 class="text-center text-danger" >{{product.name}}</h5></a>
+				<hr/>
+				<h6 style="display:inline;">Price  : </h6>
+				
+				{% widthratio product.offer 1 product.price as value %}
+				{% widthratio value -100 1 as result %}
+				
+				<h6 style="display:inline; float:right;" ><s>$ {{product.price}}</s>&nbsp; $ {{product.price|add:result}}</h6>
+				<a class="px-1 text-success " style="float:right;" href="#">
+				<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-tags-fill" viewBox="0 0 16 16">
+				<path d="M2 2a1 1 0 0 1 1-1h4.586a1 1 0 0 1 .707.293l7 7a1 1 0 0 1 0 1.414l-4.586 4.586a1 1 0 0 1-1.414 0l-7-7A1 1 0 0 1 2 6.586V2zm3.5 4a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"/>
+				<path d="M1.293 7.793A1 1 0 0 1 1 7.086V2a1 1 0 0 0-1 1v4.586a1 1 0 0 0 .293.707l7 7a1 1 0 0 0 1.414 0l.043-.043-7.457-7.457z"/>
+				</svg>
+				<h7 >{{product.category}}</h7></a>
+			  </div>
+			</div>
+		</div>
+		{% endfor %}
+		
+		<div class="col-lg-3">
+		<a href="{% url 'product-list' %}" >
+        <svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" fill="currentColor" class="bi bi-arrow-right-circle-fill" viewBox="0 0 16 16">
+		<path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0zM4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z"/>
+		</svg>
+		</a>
+      </div>
+		
+	</div>
+
+    <!-- START THE FEATURETTES -->
+
+    <hr class="featurette-divider">
+	
+
+    <div class="row featurette">
+      <div class="col-md-7 order-md-2">
+        <h2 class="featurette-heading">Oh yeah, it’s that good. <span class="text-muted">See for yourself.</span></h2>
+        <p class="lead">Another featurette? Of course. More placeholder content here to give you an idea of how this layout would work with some actual real-world content in place.</p>
+      </div>
+      <div class="col-md-5 order-md-1">
+        <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"/><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg>
+
+      </div>
+    </div>
+
+    <hr class="featurette-divider">
+
+    <div class="row featurette">
+      <div class="col-md-7">
+        <h2 class="featurette-heading">And lastly, this one. <span class="text-muted">Checkmate.</span></h2>
+        <p class="lead">And yes, this is the last block of representative placeholder content. Again, not really intended to be actually read, simply here to give you a better view of what this would look like with some actual content. Your content.</p>
+      </div>
+      <div class="col-md-5">
+        <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"/><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg>
+
+      </div>
+    </div>
+
+    <hr class="featurette-divider">
+	
+	
+
+    <!-- /END THE FEATURETTES -->
+
+  </div><!-- /.container -->
+
+{% endif %}
+
+
+</main>
+{% endblock %}
+
+   

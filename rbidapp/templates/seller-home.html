@@ -1,0 +1,58 @@
+{% extends 'base-seller.html' %}
+{% load static %}
+{% block content %}
+
+
+<main>
+
+  
+	
+  <div class="container marketing p-5">
+  <div>
+  <p class="h1 text-info text-center">Welcome, Our Great Partners ...</p>
+  
+
+
+  </div>
+
+    <!-- Three columns of text below the carousel -->
+    <div class="row p-5 px-5">
+	
+		
+		<div class="col-md-5 mb-4 ">
+		<a href="{% url 'product-upload' %}" class="navbar-brand p-5" >
+			<div class="card shadow bg-warning p-5 ">
+			  <div class="card-body p-3">
+			    <h1 class="text-center" >Upload Product</h1>
+				
+			  </div>
+			</div>
+			</a>
+		</div>
+		
+		<div class="col-md-5 mb-4">
+		<a href="{% url 'offers-list' %}" class="navbar-brand p-5" >
+			<div class="card shadow bg-danger p-5">
+			  <div class="card-body p-3">
+			   <h1 class="text-center" >Bid Product</h1>
+
+			  </div>
+			</div>
+		</a>
+		</div>
+		
+
+		
+		
+		
+	</div>
+
+    <!-- START THE FEATURETTES -->
+
+    <hr />
+
+
+
+</main>
+
+{% endblock %}

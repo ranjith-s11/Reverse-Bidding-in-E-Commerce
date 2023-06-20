@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<main>
+
+  
+	
+  <div class="container marketing p-5">
+	<table class="table table-bordered table-hover">
+		<thead class="text-info" >
+			<tr>
+				<th>Bided Products</th>
+				<th>Quantity</th>
+				<th>Price</th>
+				<th>Total Price</th>
+				<th>End Date</th>
+
+			</tr>
+		</thead>
+		<tbody class="text-dark table-success" >	
+		
+		
+		{% for bided in bideds %}
+			<tr>
+				<td>
+				
+				<table>
+					<tr>
+						<th>
+						<img src="/media/{{bided.b_img}}" class="rounded-3" height="100" width="100" />
+						<p><a  class="text-dark px-3 h6" href="#">{{bided.b_name}}</a></p>
+						</th>
+						
+						{% if bided not in cbids %}
+						<th>
+						<form action="{% url 'delete-bided' bided.id %}" ><button class="btn btn-sm btn-danger" type="submit">
+						<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-trash3-fill" viewBox="0 0 16 16">
+						<path d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5Zm-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5ZM4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06Zm6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528ZM8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5Z"/>
+						</svg>
+						</button></form>
+						</th>
+						{% endif %}
+						
+						
+					</tr>
+				</table>
+					
+				</td>
+				<td >
+					{{bided.b_qty}}
+				</td>
+				<td>$ {{bided.b_price}}</td>
+				<td>$ {% widthratio bided.b_price 1 bided.b_qty %}</td>
+				
+				{% if bided in  cbids %}
+				<td>
+					<form action="{% url 'get-bid-result' bided.id %}" >
+					<button class="btn btn-sm btn-success" type="submit"> GET </button>
+					</form>
+				</td>
+				{% else %}
+				<td>{{bided.b_expiry}}</td>
+				{% endif %}
+				
+			</tr>
+		{% endfor %}
+
+			
+		</tbody>
+		
+	</table>
+	<p class="text-center"> <a href="{% url 'bid-result' %}" class="btn btn-secondary px-5 p-2 rounded-3">
+		<svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-hammer" viewBox="0 0 16 16">
+			<path d="M9.972 2.508a.5.5 0 0 0-.16-.556l-.178-.129a5.009 5.009 0 0 0-2.076-.783C6.215.862 4.504 1.229 2.84 3.133H1.786a.5.5 0 0 0-.354.147L.146 4.567a.5.5 0 0 0 0 .706l2.571 2.579a.5.5 0 0 0 .708 0l1.286-1.29a.5.5 0 0 0 .146-.353V5.57l8.387 8.873A.5.5 0 0 0 14 14.5l1.5-1.5a.5.5 0 0 0 .017-.689l-9.129-8.63c.747-.456 1.772-.839 3.112-.839a.5.5 0 0 0 .472-.334z"/>
+			</svg>
+		<b>Bid Result</b></a>.</p>
+	</div>
+
+    <!-- START THE FEATURETTES -->
+
+    <hr class="featurette-divider">
+	
+</main>
+{% endblock %}

@@ -1,0 +1,323 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<main>
+
+  
+  <div class="container marketing p-5">
+ <h3 class="my-4 border-bottom pb-1 text-center text-danger h1">{{data.name}}</h3>
+	<!-- <div class="row"> -->
+		<!-- Images -->
+		
+		 <div id="myCarousel" class="carousel slide p-5" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    </div>
+    <div class="carousel-inner">
+	
+      <div class="carousel-item active">
+        <img src="/media/{{data.img1}}" class="bd-placeholder-img" width="100" height="100" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
+      </div>
+	  
+      <div class="carousel-item">
+        <img src="/media/{{data.img2}}"  class="bd-placeholder-img" width="100" height="100" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
+      </div>
+	  
+	  
+    </div>
+	
+    <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+  
+  
+		<div class="mb-3">
+			
+			<hr/>
+			<p class="h2 text-center text-danger p-3" >Summary</p>
+			<table class="table table-bordered d-flex justify-content-center">
+				<tr>
+					<th class="text-light text-center h5" >Name</th>
+					<th class="text-warning text-center h5">{{data.name}}</th>
+				</tr>
+				
+				{% widthratio data.offer 1 data.price as value %}
+				{% widthratio value -100 1 as result %}
+				
+				<tr>
+					<th class="text-light text-center h5" >Price</th>
+					<th class="text-warning text-center h5" ><s>$ {{data.price}}</s> <a class="text-info" >({{data.offer}}% offer)</a> &nbsp;&nbsp; <h3>$ {{data.price|add:result}}</h3></th>
+				</tr>
+				<tr>
+					<th class="text-light text-center h5" >Description</th>
+					<th class="text-warning text-center h5">{{data.description}}</th>
+				</tr>
+				<tr>
+					<th class="text-light text-center h5" >Category</th>
+					<th class="text-warning text-center h5"><a href="/cat-product/{{data.category.id}}" >{{data.category}}</a></th>
+				</tr>
+				<tr>
+					<th class="text-light text-center h5" >Rating</th>
+					<th class="text-warning text-center h5">
+					
+					<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-star-fill text-warning" viewBox="0 0 16 16">
+					<path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+					</svg>
+					<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-star-fill text-warning" viewBox="0 0 16 16">
+					<path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+					</svg>
+					<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-star-fill text-warning" viewBox="0 0 16 16">
+					<path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+					</svg>
+					<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-star-fill text-warning" viewBox="0 0 16 16">
+					<path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+					</svg>
+					<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-star-fill text-warning" viewBox="0 0 16 16">
+					<path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+					</svg>
+					
+					</th>
+				</tr>
+				
+				
+			</table>
+			<hr/>
+			
+			<div class="input-group my-3" style="width:80%;">
+			<p class="h2 px-3 text-danger" >Add to Cart 
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+			
+			<form action="{% url 'add-cart' data.id %}" >
+			<table>
+			<tr>
+			<th>
+			  <input name="quantity" type="number"  value="1" class="form-control rounded-3" />
+			  <input name="p_name" type="hidden"  value="{{data.name}}"  />
+			  <input name="p_price" type="hidden"  value="{{data.price}}"  />
+			  <input name="p_img" type="hidden"  value="{{data.img1}}"  />
+			</th>
+			<th>
+				<a class="px-2" >
+			    <button class="btn btn-primary btn-sm rounded-3" type="submit"><svg xmlns="http://www.w3.org/2000/svg" width="50" height="35" fill="currentColor" class="bi bi-cart-plus" viewBox="0 0 16 16">
+				<path d="M9 5.5a.5.5 0 0 0-1 0V7H6.5a.5.5 0 0 0 0 1H8v1.5a.5.5 0 0 0 1 0V8h1.5a.5.5 0 0 0 0-1H9V5.5z"/>
+				<path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zm3.915 10L3.102 4h10.796l-1.313 7h-8.17zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+				</svg> </button>
+			  </a>
+			</th>
+			  </tr>
+			  </table>
+			  </form>
+			  
+			</div>
+			
+			<hr />
+			
+			<div class="input-group my-3" style="width:80%;">
+			<p class="h2 px-3 text-danger" >Auction Cart
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+			
+			<form action="{% url 'bid-product' data.id %}" >
+			<table>
+			<tr>
+			<th>
+			 <input name="b_qty" type="number" class="form-control rounded-3" value="1"  >
+			 <input name="b_day" type="number" class="form-control rounded-3" value="1" min="1" max="7" >  
+			 <input name="b_name" type="hidden"  value="{{data.name}}"  />
+			 <input name="b_price" type="hidden"  value="{{data.price}}"  />
+			 <input name="b_about" type="hidden"  value="{{data.about}}"  />
+			 <input name="b_img" type="hidden"  value="{{data.img1}}"  />
+			</th>
+			<th>
+			<span class="input-group-text px-5 rounded-3 text-primary" id="basic-addon2" ><b>Quantity</b></span>
+			<span class="input-group-text px-5 rounded-3 text-primary" id="basic-addon2" ><b>Day / Days</b>&nbsp; for Auction</span>
+			</th>
+			<th>
+			<a class="px-3" >
+			    <button class="btn btn-warning btn-sm rounded-3" type="submit"><svg xmlns="http://www.w3.org/2000/svg" width="50" height="35" fill="currentColor" class="bi bi-hammer" viewBox="0 0 16 16">
+				<path d="M9.972 2.508a.5.5 0 0 0-.16-.556l-.178-.129a5.009 5.009 0 0 0-2.076-.783C6.215.862 4.504 1.229 2.84 3.133H1.786a.5.5 0 0 0-.354.147L.146 4.567a.5.5 0 0 0 0 .706l2.571 2.579a.5.5 0 0 0 .708 0l1.286-1.29a.5.5 0 0 0 .146-.353V5.57l8.387 8.873A.5.5 0 0 0 14 14.5l1.5-1.5a.5.5 0 0 0 .017-.689l-9.129-8.63c.747-.456 1.772-.839 3.112-.839a.5.5 0 0 0 .472-.334z"/>
+				</svg> </button>
+			</a>
+			</th>
+			  </tr>
+			  </table>
+			  </form>
+			  
+			</div>
+			
+			
+			
+		</div>
+	<!-- </div> -->
+	<hr />
+	<div class="row">
+		<div class="md-6">
+			<p class="h2 text-danger p-3" >Specification</p>
+			<!-- Detail -->
+			<table class="table table-bordered">
+				<tr>
+					<th class="text-light text-center h5" >name-1</th>
+					<td class="text-center h5" ><a class="text-warning" href="#">detail-1</a></td>
+				</tr>
+				<tr>
+					<th class="text-light text-center h5" >name-2</th>
+					<td class="text-center h5" ><a class="text-warning" href="#">detail-2</a></td>
+				</tr>
+			</table>
+		</div>
+		 
+		<hr />
+		
+		<div class="row">
+		<div class="md-6">
+			<p class="h2 text-danger p-3" >About</p>
+			<!-- Detail -->
+			<p class="text-info" >{{data.about}}<p>
+		</div>
+		
+		<hr />
+		
+		
+	<p class="h2 text-danger p-3" >Recommended Products</p>
+	<div class="row p-5">
+	
+	{% for recommended in recommendeds %}
+		<div class="col-md-3 mb-4">
+			<div class="card border-primary shadow bg-light">
+			  <a href="#"><img src="/media/{{recommended.img1}}" class="card-img-top" alt="title"></a>
+			  <div class="card-body">
+			    <a><h5 class="text-center text-danger" >{{recommended.name}}</h5></a>
+				<hr/>
+				<h6 style="display:inline;">Price  : </h6>
+				
+				{% widthratio recommended.offer 1 recommended.price as value %}
+				{% widthratio value -100 1 as result %}
+				
+				<h6 style="display:inline; float:right;" ><s>$ {{recommended.price}}</s>  $ {{recommended.price|add:result}}</h6>
+				<a class="px-1 text-success " style="float:right;">
+				<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-tags-fill" viewBox="0 0 16 16">
+				<path d="M2 2a1 1 0 0 1 1-1h4.586a1 1 0 0 1 .707.293l7 7a1 1 0 0 1 0 1.414l-4.586 4.586a1 1 0 0 1-1.414 0l-7-7A1 1 0 0 1 2 6.586V2zm3.5 4a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"/>
+				<path d="M1.293 7.793A1 1 0 0 1 1 7.086V2a1 1 0 0 0-1 1v4.586a1 1 0 0 0 .293.707l7 7a1 1 0 0 0 1.414 0l.043-.043-7.457-7.457z"/>
+				</svg>
+				<h7 >{{recommended.category}}</h7></a>
+			  </div>
+			</div>
+		</div>
+	{% endfor %}
+		
+		</div>
+		<hr/>
+		
+		<!-- Reviews -->
+		<div class="md-6">
+			<p class="h2 text-danger p-3" >Reviews
+			{% if eligible %}
+			<button type="button" class="btn btn-warning px-3 float-end" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+			<span class="h5" >Add Review</span></button>
+			{% endif %}
+			</p>
+
+			
+
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog ">
+    <div class="modal-content ">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Add Your Review</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+	  <form method="post" action="{% url 'add-review' data.id %}">
+	  {% csrf_token %}
+				<table class="table table-bordered">
+					{{reviewform.as_table}}
+					<tr>
+						<td colspan="2">
+							<button type="submit" class="btn btn-primary">Submit</button>
+							<input type="reset" class="btn btn-dark" value="Reset" id="reset" />
+						</td>
+					</tr>
+				</table>
+				<p class="ajaxRes"></p>
+			</form>
+		
+      </div>
+    </div>
+  </div>
+</div>
+
+	<!-- Product Review End -->
+			<div class="card bg-secondary text-light">
+				<div class="card-body review-list" style="max-height: 400px; overflow: auto;">
+					<!-- Detail -->
+						{% for review in reviews %}
+						<figure class="text-end">
+						<blockquote class="blockquote">
+							<p>{{review.comment}}</p>
+						</blockquote>
+						<figcaption class="blockquote-footer">
+						<cite title="Source Title"><span class="text-light" >- {{review.user}}</span>
+							{% for star in review.rating|ljust:review.rating %}
+							<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill text-warning" viewBox="0 0 16 16">
+							<path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+							</svg>
+							{% endfor %}
+							
+							</cite>
+						</figcaption>
+						</figure>
+						<hr />
+						{% endfor %}
+
+
+				</div>
+			</div>
+		</div>
+	</div>
+	
+<div class="modal-body">
+
+				<table class="table ">
+
+					<tr>
+						<td colspan="5">
+						</td>
+						<td colspan="5">
+						</td>
+						<td colspan="5">
+						</td>
+
+						<td colspan="5">
+							<a class="btn btn-secondary rounded-circle" href="#" >
+							<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-arrow-clockwise" viewBox="0 0 16 16">
+							<path fill-rule="evenodd" d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2v1z"/>
+							<path d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466z"/>
+							</svg>
+							</a>
+							
+						</td>
+
+					</tr>
+				</table>
+	</div>
+
+    <hr class="featurette-divider">
+	
+	
+
+    <!-- /END THE FEATURETTES -->
+
+  </div><!-- /.container -->
+
+
+
+</main>
+{% endblock %}
